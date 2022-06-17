@@ -11,6 +11,8 @@
 @layer components {
     //Menus - Main one uses theses classes
     .menu-container {
+        pointer-events: auto;
+        z-index: 900;
         @apply tw-flex tw-h-3/4 tw-w-full tw-text-white tw-pointer-events-auto tw-z-[900] tw-right-0 tw-left-0 tw-m-auto;
         @apply md:tw-w-4/5 md:tw-top-14 md:tw-m-auto md:tw-absolute;
 
@@ -49,11 +51,15 @@
     //Buttons - basic buttons appearance
     button,
     .btn {
-        @apply tw-border-none tw-rounded tw-px-2 tw-py-1 tw-mx-0.5 tw-my-1 tw-items-center tw-flex tw-no-underline tw-transition-colors tw-duration-300 tw-break-words;
+        @apply tw-border-none tw-rounded tw-min-h-10 tw-px-2 tw-py-1 tw-mx-0.5 tw-my-1 tw-items-center tw-flex tw-no-underline tw-transition-colors tw-duration-300 tw-break-words;
         @apply md:tw-px-4;
         * {
             @apply clickable;
         }
+    }
+
+    button {
+      @apply tw-border-none tw-bg-transparent tw-text-white;
     }
 
     .btn:hover,
@@ -74,9 +80,38 @@
     .blue-dialog-box {
         @apply tw-bg-dark-purple/95 tw-rounded tw-text-light-blue tw-self-center tw-m-1 tw-p-1 tw-align-middle tw-align-middle;
     }
+    //form
+    .form-textarea {
+        @apply tw-flex-1 tw-text-sm tw-ml-2 tw-bg-transparent tw-outline-0 focus:tw-ring-0 tw-mb-0 tw-min-h-[35px] tw-border-0 tw-resize-none placeholder:tw-italic placeholder:tw-text-light-purple;
+    }
+
+    .wa-seachbar {
+
+    }
+
+    //Dialog boxes used to notify user about something (follow feature, jitsi room, etc...)
+    .blue-dialog-box {
+        @apply tw-bg-dark-purple/95 tw-rounded tw-text-light-blue tw-self-center tw-m-1 tw-p-1 tw-align-middle tw-align-middle;
+    }
 
     .outline-light {
         @apply tw-border-light-blue tw-border-solid tw-border;
+    }
+    /*.outline-light {
+        @apply tw-border-light-blue tw-border-solid
+    }*/
+
+
+    .wa-chat-item{
+        @apply tw-flex tw-px-6 tw-py-3 tw-items-center tw-cursor-pointer tw-text-white hover:tw-no-underline hover:tw-text-white;
+
+        &:hover{
+            background-color: rgba(#4D4B67, .24);
+        }
+
+        *{
+            cursor: pointer;
+        }
     }
 }
 
@@ -150,6 +185,7 @@
             @apply tw-bg-pop-red tw-text-dark-purple;
         }
 
+        &.close,
         &.close-window {
             @apply tw-bg-pop-red tw-text-white tw-ring-1 tw-ring-dark-blue tw-absolute tw-right-6 tw-px-0 tw-py-0 tw-h-5 tw-w-5 tw-justify-center;
         }
@@ -190,5 +226,42 @@
     .clickable,
     .clickable:hover {
         cursor: url("./images/cursor_pointer.png"), pointer;
+    }
+}
+
+
+.loading{
+    &-group{
+        display: flex;
+        align-items: center;
+    }
+
+    &-dot{
+        $r: 8px;
+        width: $r;
+        height: $r;
+        content: '';
+        display: block;
+        background: white;
+        animation: loader .6s ease infinite alternate;
+        border-radius: 50%;
+        margin-right: 5px;
+
+        &:nth-child(2){
+            animation-delay: .3s;
+        }
+
+        &:nth-child(3){
+            animation-delay: .6s;
+        }
+    }
+}
+
+@keyframes loader {
+    from {
+        opacity: 1;
+    }
+    to{
+        opacity: .2;
     }
 }
