@@ -651,7 +651,7 @@ class CoWebsiteManager {
             this.displayMain();
         }
 
-        const coWebsiteLloading = coWebsite
+        const coWebsiteLoading = coWebsite
             .load()
             .then(() => {
                 const mainCoWebsite = this.getMainCoWebsite();
@@ -682,7 +682,7 @@ class CoWebsiteManager {
                 this.removeCoWebsiteFromStack(coWebsite);
             });
 
-        return coWebsiteLloading;
+        return coWebsiteLoading;
     }
 
     public unloadCoWebsite(coWebsite: CoWebsite): Promise<void> {
